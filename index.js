@@ -79,6 +79,12 @@ Account_LoginSync.CharacterListResponse.CharacterDBs.forEach(c => {
 
     res.target = inputCharacterData?.target || res.current;
 
+    for (const key in res.current) {
+        if (res.target[key] < res.current[key]) {
+            res.target[key] = res.current[key];
+        }
+    }
+
     output.characters.push(res);
 });
 
